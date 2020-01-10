@@ -1,5 +1,5 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
+# Licensed under the MIT License...
 import requests
 
 from azure_monitor import AzureMonitorSpanExporter
