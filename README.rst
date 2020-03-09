@@ -1,6 +1,10 @@
 OpenTelemetry Azure Monitor Exporters
 =====================================
 
+.. image:: https://badges.gitter.im/Microsoft/azure-monitor-exporters.svg
+   :alt: Join the chat at https://gitter.im/Microsoft/azure-monitor-exporters
+   :target: https://gitter.im/Microsoft/azure-monitor-exporters?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 |pypi|
 
 .. |pypi| image:: https://badge.fury.io/py/opentelemetry-azure-monitor-exporter.svg
