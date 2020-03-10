@@ -13,7 +13,7 @@ from azure_monitor.storage import (
     _seconds,
 )
 
-TEST_FOLDER = os.path.abspath(".test")
+TEST_FOLDER = os.path.abspath(".test.storage")
 
 
 def setUpModule():
