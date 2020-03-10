@@ -37,7 +37,10 @@ class Data(BaseObject):
         self.base_type = base_type
 
     def to_dict(self):
-        return {"baseData": self.base_data.to_dict(), "baseType": self.base_type}
+        return {
+            "baseData": self.base_data.to_dict(),
+            "baseType": self.base_type,
+        }
 
 
 class DataPointType(Enum):
@@ -400,10 +403,7 @@ class MetricData(BaseObject):
     def to_dict(self):
         return {
             "ver": self.ver,
-            "metrics": list(map(
-                lambda x: x.to_dict(),
-                self.metrics,
-            )),
+            "metrics": list(map(lambda x: x.to_dict(), self.metrics)),
             "properties": self.properties,
         }
 

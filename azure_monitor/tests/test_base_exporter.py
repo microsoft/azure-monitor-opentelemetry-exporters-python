@@ -2,16 +2,17 @@
 # Licensed under the MIT License.
 
 import json
-import mock
 import os
 import shutil
 import unittest
+
+import mock
 
 from azure_monitor.exporter import BaseExporter
 from azure_monitor.protocol import Data, Envelope
 from azure_monitor.utils import Options
 
-TEST_FOLDER = os.path.abspath('.test.exporter')
+TEST_FOLDER = os.path.abspath(".test.exporter")
 
 
 def setUpModule():
@@ -71,15 +72,17 @@ class TestBaseExporter(unittest.TestCase):
         self.assertEqual(base.options.storage_max_size, 3)
         self.assertEqual(base.options.storage_retention_period, 4)
         self.assertEqual(base.options.timeout, 5)
-        self.assertEqual(base.options.storage_path, \
-            os.path.join(TEST_FOLDER, self.id()))
+        self.assertEqual(
+            base.options.storage_path, os.path.join(TEST_FOLDER, self.id())
+        )
 
     def test_constructor_wrong_options(self):
         """Test the constructor with wrong options."""
         with self.assertRaises(TypeError):
             base = BaseExporter(
                 something_else=6,
-                storage_path=os.path.join(TEST_FOLDER, self.id()))
+                storage_path=os.path.join(TEST_FOLDER, self.id()),
+            )
 
     def test_telemetry_processor_add(self):
         base = BaseExporter(storage_path=os.path.join(TEST_FOLDER, self.id()))
@@ -150,7 +153,7 @@ class TestBaseExporter(unittest.TestCase):
 
     def test_transmission_nothing(self):
         exporter = BaseExporter(
-            storage_path=os.path.join(TEST_FOLDER, self.id()),
+            storage_path=os.path.join(TEST_FOLDER, self.id())
         )
         with mock.patch("requests.post") as post:
             post.return_value = None
@@ -158,7 +161,7 @@ class TestBaseExporter(unittest.TestCase):
 
     def test_transmission_pre_exception(self):
         exporter = BaseExporter(
-            storage_path=os.path.join(TEST_FOLDER, self.id()),
+            storage_path=os.path.join(TEST_FOLDER, self.id())
         )
         envelopes_to_export = map(lambda x: x.to_dict(), tuple([Envelope()]))
         exporter.storage.put(envelopes_to_export)
@@ -171,7 +174,7 @@ class TestBaseExporter(unittest.TestCase):
     def test_transmission_lease_failure(self, requests_mock):
         requests_mock.return_value = MockResponse(200, "unknown")
         exporter = BaseExporter(
-            storage_path=os.path.join(TEST_FOLDER, self.id()),
+            storage_path=os.path.join(TEST_FOLDER, self.id())
         )
         envelopes_to_export = map(lambda x: x.to_dict(), tuple([Envelope()]))
         exporter.storage.put(envelopes_to_export)
