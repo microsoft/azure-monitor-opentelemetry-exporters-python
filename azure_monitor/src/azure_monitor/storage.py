@@ -122,6 +122,7 @@ class LocalFileStorage:
             if not silent:
                 raise
         try:
+            # pylint: disable=unused-variable
             for blob in self.gets():
                 pass
         except Exception:
